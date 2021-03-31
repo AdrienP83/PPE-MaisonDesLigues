@@ -27,6 +27,11 @@ class Reservation
      */
     private $typerepas;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Inscription::class, inversedBy="unereservation")
+     */
+    private $desinscriptions;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -52,6 +57,18 @@ class Reservation
     public function setTyperepas(string $typerepas): self
     {
         $this->typerepas = $typerepas;
+
+        return $this;
+    }
+
+    public function getDesinscriptions(): ?Inscription
+    {
+        return $this->desinscriptions;
+    }
+
+    public function setDesinscriptions(?Inscription $desinscriptions): self
+    {
+        $this->desinscriptions = $desinscriptions;
 
         return $this;
     }

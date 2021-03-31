@@ -42,7 +42,13 @@ class Compte
     private $role;
 
     /**
-     * @ORM\OneToOne(targetEntity=Inscription::class, inversedBy="compte", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=Licencie::class, cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $unlicencie;
+
+    /**
+     * @ORM\OneToOne(targetEntity=Inscription::class, cascade={"persist", "remove"})
      */
     private $uneinscription;
 
@@ -95,6 +101,18 @@ class Compte
     public function setRole(string $role): self
     {
         $this->role = $role;
+
+        return $this;
+    }
+
+    public function getUnlicencie(): ?Licencie
+    {
+        return $this->unlicencie;
+    }
+
+    public function setUnlicencie(Licencie $unlicencie): self
+    {
+        $this->unlicencie = $unlicencie;
 
         return $this;
     }
