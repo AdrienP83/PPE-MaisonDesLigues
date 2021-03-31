@@ -22,6 +22,18 @@ class Proposer
      */
     private $tarifnuite;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Hotel::class, inversedBy="despropositions")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $unhotel;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=CategorieChambre::class, inversedBy="desPropositions")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $unechambre;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -35,6 +47,30 @@ class Proposer
     public function setTarifnuite(int $tarifnuite): self
     {
         $this->tarifnuite = $tarifnuite;
+
+        return $this;
+    }
+
+    public function getUnhotel(): ?Hotel
+    {
+        return $this->unhotel;
+    }
+
+    public function setUnhotel(?Hotel $unhotel): self
+    {
+        $this->unhotel = $unhotel;
+
+        return $this;
+    }
+
+    public function getUnechambre(): ?CategorieChambre
+    {
+        return $this->unechambre;
+    }
+
+    public function setUnechambre(?CategorieChambre $unechambre): self
+    {
+        $this->unechambre = $unechambre;
 
         return $this;
     }
