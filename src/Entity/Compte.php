@@ -33,7 +33,7 @@ class Compte implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\Length(min="4", minMessage="Votre mot de passe doit faire minimum 4 carractères")
+     * @Assert\Length(min="4", minMessage="Votre mot de passe doit faire minimum 4 caractères")
      */
     private $password;
 

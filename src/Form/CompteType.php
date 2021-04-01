@@ -15,10 +15,10 @@ class CompteType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('numlicence', NumberType::class)
-            ->add('mail', EmailType::class)
-            ->add('mdp', PasswordType::class)
-            ->add('mdp', PasswordType::class)
+            ->add('username', NumberType::class)
+            ->add('email', EmailType::class)
+            ->add('password', PasswordType::class)
+            ->add('confirm_password', PasswordType::class)
         ;
     }
 
