@@ -5,11 +5,12 @@ namespace App\Entity;
 use App\Repository\CompteRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass=CompteRepository::class)
  */
-class Compte
+class Compte implements UserInterface
 {
     /**
      * @ORM\Id
@@ -21,25 +22,31 @@ class Compte
     /**
      * @ORM\Column(type="integer")
      */
-    private $numlicence;
+    private $username;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\Email(
+     * @Assert\Email()
      * message = "{{ value }}' n'est pas une adresse mail valide"
-     * )
      */
-    private $mail;
+    private $email;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @Assert\Length(min="4", minMessage="Votre mot de passe doit faire minimum 4 carractères")
+     */
+    private $password;
+
+    /**
+     *
+     * @Assert\EqualTo(propertyPath="password", message="Vous n'avez pas tapé le même mot de passe")
+     */
+    public $confirm_password;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $mdp;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $role;
+    private $roles;
 
     /**
      * @ORM\OneToOne(targetEntity=Licencie::class, cascade={"persist", "remove"})
@@ -57,50 +64,45 @@ class Compte
         return $this->id;
     }
 
-    public function getNumlicence(): ?int
+    public function getEmail(): ?string
     {
-        return $this->numlicence;
+        return $this->email;
     }
 
-    public function setNumlicence(int $numlicence): self
+    public function setEmail(string $email): self
     {
-        $this->numlicence = $numlicence;
+        $this->email = $email;
 
         return $this;
     }
 
-    public function getMail(): ?string
+    public function getUsername(): ?string
     {
-        return $this->mail;
+        return $this->username;
     }
 
-    public function setMail(string $mail): self
+    public function setUsername(string $username): self
     {
-        $this->mail = $mail;
+        $this->username = $username;
 
         return $this;
     }
 
-    public function getMdp(): ?string
+    public function getPassword(): ?string
     {
-        return $this->mdp;
+        return $this->password;
     }
 
-    public function setMdp(string $mdp): self
+    public function setPassword(string $password): self
     {
-        $this->mdp = $mdp;
+        $this->password = $password;
 
         return $this;
     }
 
-    public function getRole(): ?string
+    public function setRoles(string $roles): self
     {
-        return $this->role;
-    }
-
-    public function setRole(string $role): self
-    {
-        $this->role = $role;
+        $this->roles = $roles;
 
         return $this;
     }
@@ -127,5 +129,18 @@ class Compte
         $this->uneinscription = $uneinscription;
 
         return $this;
+    }
+
+    public function eraseCredentials()
+    {;
+    }
+
+    public function getRoles()
+    {
+        return ['ROLE_USER'];
+    }
+
+    public function getSalt()
+    {
     }
 }
