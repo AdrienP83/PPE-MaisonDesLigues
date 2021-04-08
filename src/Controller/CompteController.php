@@ -19,8 +19,6 @@ class CompteController extends AbstractController
     public function Registration(Request $request, EntityManagerInterface $manager,
             UserPasswordEncoderInterface $encoder):Response {
         $compte = new Compte();
-
-
         //relie les champs du formulaire avec ceux de l'utilisateur
         $form = $this->createForm(CompteType::class, $compte);
 
@@ -51,7 +49,7 @@ class CompteController extends AbstractController
             'notice',
             'Invalid name entered'
         );
-        return $this->render('security/login.html.twig');
+        return $this->render('compte/login.html.twig');
     }
 
     /**
