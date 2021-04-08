@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-   <head>
+    <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
         <link rel="stylesheet"
@@ -9,5 +9,10 @@
     </head>
     <body>
         
+        {% block navbar %}
+            {{ include('elements/navbar.html.twig') }}
+        {% endblock %}
+
+
     </body>
 </html>
