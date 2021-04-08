@@ -2,7 +2,6 @@
 
 namespace App\Entity;
 
-use App\Repository\CompteRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\UserInterface;
