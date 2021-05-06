@@ -2,7 +2,6 @@
 
 namespace App\Entity;
 
-use App\Repository\CompteRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -44,13 +43,13 @@ class Compte implements UserInterface
     public $confirm_password;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $roles;
 
     /**
      * @ORM\OneToOne(targetEntity=Licencie::class, cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $unlicencie;
 
@@ -76,12 +75,12 @@ class Compte implements UserInterface
         return $this;
     }
 
-    public function getUsername(): ?string
+    public function getUsername(): ?int
     {
         return $this->username;
     }
 
-    public function setUsername(string $username): self
+    public function setUsername(int $username): self
     {
         $this->username = $username;
 
@@ -132,7 +131,7 @@ class Compte implements UserInterface
     }
 
     public function eraseCredentials()
-    {;
+    {
     }
 
     public function getRoles()
