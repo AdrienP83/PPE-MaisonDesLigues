@@ -15,8 +15,8 @@ class CompteType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('username', NumberType::class)
-            ->add('email', EmailType::class)
+            ->add('username')
+            ->add('email')
             ->add('password', PasswordType::class)
             ->add('confirm_password', PasswordType::class)
         ;

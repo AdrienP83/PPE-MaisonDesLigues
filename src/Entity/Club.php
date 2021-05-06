@@ -20,9 +20,39 @@ class Club
     private $id;
 
     /**
-     * @ORM\OneToMany(targetEntity=Licencie::class, mappedBy="unClub")
+     * @ORM\OneToMany(targetEntity=Licencie::class, mappedBy="unclub")
      */
     private $licencies;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $nom;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $adresse2;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $cp;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $ville;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $tel;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $adresse1;
 
     public function __construct()
     {
@@ -46,7 +76,7 @@ class Club
     {
         if (!$this->licencies->contains($licency)) {
             $this->licencies[] = $licency;
-            $licency->setUnClub($this);
+            $licency->setUnclub($this);
         }
 
         return $this;
@@ -56,10 +86,82 @@ class Club
     {
         if ($this->licencies->removeElement($licency)) {
             // set the owning side to null (unless already changed)
-            if ($licency->getUnClub() === $this) {
-                $licency->setUnClub(null);
+            if ($licency->getUnclub() === $this) {
+                $licency->setUnclub(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getNom(): ?string
+    {
+        return $this->nom;
+    }
+
+    public function setNom(string $nom): self
+    {
+        $this->nom = $nom;
+
+        return $this;
+    }
+
+    public function getAdresse2(): ?string
+    {
+        return $this->adresse2;
+    }
+
+    public function setAdresse2(?string $adresse2): self
+    {
+        $this->adresse2 = $adresse2;
+
+        return $this;
+    }
+
+    public function getCp(): ?int
+    {
+        return $this->cp;
+    }
+
+    public function setCp(int $cp): self
+    {
+        $this->cp = $cp;
+
+        return $this;
+    }
+
+    public function getVille(): ?string
+    {
+        return $this->ville;
+    }
+
+    public function setVille(string $ville): self
+    {
+        $this->ville = $ville;
+
+        return $this;
+    }
+
+    public function getTel(): ?int
+    {
+        return $this->tel;
+    }
+
+    public function setTel(?int $tel): self
+    {
+        $this->tel = $tel;
+
+        return $this;
+    }
+
+    public function getAdresse1(): ?string
+    {
+        return $this->adresse1;
+    }
+
+    public function setAdresse1(string $adresse1): self
+    {
+        $this->adresse1 = $adresse1;
 
         return $this;
     }
