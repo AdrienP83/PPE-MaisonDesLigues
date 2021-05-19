@@ -20,7 +20,7 @@ class Inscription
     private $id;
 
     /**
-     * @ORM\OneToOne(targetEntity=Compte::class, cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=User::class, cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $uncompte;
@@ -52,12 +52,12 @@ class Inscription
         return $this->id;
     }
 
-    public function getUncompte(): ?Compte
+    public function getUncompte(): ?User
     {
         return $this->uncompte;
     }
 
-    public function setUncompte(Compte $uncompte): self
+    public function setUncompte(User $uncompte): self
     {
         $this->uncompte = $uncompte;
 

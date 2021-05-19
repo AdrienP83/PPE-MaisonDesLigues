@@ -32,7 +32,7 @@ class Licencie
     private $mail;
 
     /**
-     * @ORM\OneToOne(targetEntity=Compte::class, cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=User::class, cascade={"persist", "remove"})
      */
     private $uncompte;
 
@@ -117,12 +117,12 @@ class Licencie
         return $this;
     }
 
-    public function getUncompte(): ?Compte
+    public function getUncompte(): ?User
     {
         return $this->uncompte;
     }
 
-    public function setUncompte(?Compte $uncompte): self
+    public function setUncompte(?User $uncompte): self
     {
         $this->uncompte = $uncompte;
 
