@@ -19,9 +19,18 @@
 
 	<div class="example-wrapper">
 		<h1>Bonjour ! ✅</h1>
-
-		La Maison des Ligues a pour mission de fournir des espaces et des services aux différentes ligues sportives régionales et à d’autres structures hébergées. La M2L est une structure financée par le Conseil Régional de Lorraine dont l’administration est déléguée au Comité Régional Olympique et Sportif de Lorraine (CROSL).
-				        Le principe est de réaliser une application web permettant à l'utilisateur de s'inscrire pour à un événement.
-
+		{% if app.user %}
+			<div class="mb-3">
+				Vous êtes connecté en tant que
+				{{ app.user.username }}
+			</div>
+		{% endif %}
+		<div class="text-justify">
+			La Maison des Ligues a pour mission de fournir des espaces et des services 
+			aux différentes ligues sportives régionales et à d’autres structures hébergées. 
+			La M2L est une structure financée par le Conseil Régional de Lorraine dont 
+			l’administration est déléguée au Comité Régional Olympique et Sportif de Lorraine 
+			Le principe est de réaliser une application web permettant à l'utilisateur de s'inscrire pour à un événement.
+		</div>
 	</div>
 {% endblock %}
