@@ -48,4 +48,49 @@ class AtelierController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+
+    /**
+     * 
+     * @Route("/{id}", name="atelier_show", methods={"GET"})
+     */
+    public function show(Atelier $atelier): Response
+    {
+        return $this->render('atelier/show.html.twig', [
+            'atelier' => $atelier,
+        ]);
+    }
+
+    /**
+     * @Route("/{id}/edit", name="atelier_edit", methods={"GET","POST"})
+     */
+    public function edit(Request $request, Atelier $atelier): Response
+    {
+        $form = $this->createForm(AtelierType::class, $atelier);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('atelier_index');
+        }
+
+        return $this->render('atelier/edit.html.twig', [
+            'atelier' => $atelier,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/{id}", name="atelier_delete", methods={"POST"})
+     */
+    public function delete(Request $request, Atelier $atelier): Response
+    {
+        if ($this->isCsrfTokenValid('delete' . $atelier->getId(), $request->request->get('_token'))) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->remove($atelier);
+            $entityManager->flush();
+        }
+
+        return $this->redirectToRoute('atelier_index');
+    }
 }

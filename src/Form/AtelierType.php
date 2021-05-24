@@ -13,8 +13,8 @@ class AtelierType extends AbstractType
     {
         $builder
             ->add('libelle')
-            ->add('nbPlaceMaxi')
-            ->add('themes')
+            ->add('nbplacesmaxi')
+            ->add('desthemes')
         ;
     }
 
