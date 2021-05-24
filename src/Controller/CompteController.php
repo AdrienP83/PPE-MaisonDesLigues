@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Entity\Compte;
+use App\Entity\User;
 use App\Form\CompteType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,7 +18,7 @@ class CompteController extends AbstractController
      */
     public function Registration(Request $request, EntityManagerInterface $manager,
             UserPasswordEncoderInterface $encoder):Response {
-        $compte = new Compte();
+        $compte = new User();
         //relie les champs du formulaire avec ceux de l'utilisateur
         $form = $this->createForm(CompteType::class, $compte);
 
@@ -33,23 +33,9 @@ class CompteController extends AbstractController
 
             return $this->redirectToRoute('security_login');
         }
-
         return $this->render('compte/inscription.html.twig', [
                     'form' => $form->createView()
         ]);
-    }
-
-
-    /**
-     * @Route("/connexion", name="security_login")
-     */
-    public function login()
-    {
-        $this->addFlash(
-            'notice',
-            'Invalid name entered'
-        );
-        return $this->render('compte/login.html.twig');
     }
 
     /**
