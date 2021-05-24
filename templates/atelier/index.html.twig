@@ -1,20 +1,44 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AtelierController!{% endblock %}
+{% block title %}Atelier index
+{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+	<h1>Atelier</h1>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Libelle</th>
+				<th>NbPlacesMaxi</th>
+				<th>Theme(s)</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for atelier in ateliers %}
+				<tr>
+					<td>{{ atelier.id }}</td>
+					<td>{{ atelier.libelle }}</td>
+					<td>{{ atelier.nbPlacesMaxi }}</td>
+					<td>
+						{% for theme in atelier.themes %}
+							{{ theme.libelle }}<br>
+						{% endfor %}
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'D:/btssio2emeannee/ppe/PPE-MaisonDesLigues/src/Controller/AtelierController.php'|file_link(0) }}">src/Controller/AtelierController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'D:/btssio2emeannee/ppe/PPE-MaisonDesLigues/templates/atelier/index.html.twig'|file_link(0) }}">templates/atelier/index.html.twig</a></code></li>
-    </ul>
-</div>
+					</td>
+					<td>
+						<a href="{{ path('atelier_show', {'id': atelier.id}) }}">show</a>
+						<a href="{{ path('atelier_edit', {'id': atelier.id}) }}">edit</a>
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="4">Pas d'atelier</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	<a href="{{ path('ajout_atelier') }}">Create new</a>
 {% endblock %}

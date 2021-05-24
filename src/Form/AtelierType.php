@@ -14,8 +14,6 @@ class AtelierType extends AbstractType
         $builder
             ->add('libelle')
             ->add('nbplacesmaxi')
-            ->add('desinscriptions')
-            ->add('unevacation')
             ->add('desthemes')
         ;
     }
@@ -23,7 +21,7 @@ class AtelierType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Atelier::class,
+            'data_class' => Atelier::class
         ]);
     }
 }
