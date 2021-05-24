@@ -20,6 +20,11 @@ class Theme
     private $id;
 
     /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $libelle;
+
+    /**
      * @ORM\ManyToMany(targetEntity=Atelier::class, mappedBy="desthemes")
      * @ORM\JoinColumn(nullable=false)
      */
@@ -33,6 +38,18 @@ class Theme
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function getLibelle(): ?string
+    {
+        return $this->libelle;
+    }
+
+    public function setLibelle(string $libelle): self
+    {
+        $this->libelle = $libelle;
+
+        return $this;
     }
 
     /**
@@ -60,5 +77,9 @@ class Theme
         }
 
         return $this;
+    }
+
+    public function __toString() {
+        return $this->getLibelle();
     }
 }
