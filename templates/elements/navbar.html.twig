@@ -23,6 +23,13 @@
 						<a href="{{ path('app_logout') }}" class="nav-link">Deconnexion
 						</a>
 					</li>
+					{% if is_granted('ROLE_ADMIN') %}
+						<li class="nav-item">
+							<a href="admin/utilisateurs" class="nav-link">Liste Visiteurs
+							</a>
+						</li>
+						{% else %}
+					{% endif %}
 				{% endif %}
 			</li>
 		</ul>
