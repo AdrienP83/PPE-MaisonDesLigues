@@ -1,0 +1,41 @@
+{% block navbar %}
+	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="true" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="navbar-collapse collapse show" id="navbarColor01" style="">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active"></li>
+				<li class="nav-item">
+					<a href="{{ path('home') }}" class="nav-link">
+						<i>Menu</i>
+					</a>
+				</li>
+				{% if not app.user  %}
+					<li class="nav-item">
+						<a href="{{ path('app_login') }}" class="nav-link">Connexion
+
+						</a>
+					</li>
+				{% else %}
+					<li class="nav-item">
+						<a href="{{ path('app_logout') }}" class="nav-link">Deconnexion
+						</a>
+					</li>
+					<li class="nav-item">
+						<a href="{{ path('atelier_index') }}" class="nav-link">Ateliers
+						</a>
+					</li>
+					{% if is_granted('ROLE_ADMIN') %}
+						<li class="nav-item">
+							<a href="{{ path('admin_utilisateur') }}" class="nav-link">Liste Visiteurs
+							</a>
+						</li>
+						{% else %}
+					{% endif %}
+				{% endif %}
+			</li>
+		</ul>
+	</div>
+</nav>{% endblock %}

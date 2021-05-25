@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Atelier
+{% endblock %}
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+{% block body %}
+	<h1>Créer un nouvel altelier</h1>
+	<div class="col-md-3">
+		{{ form_start(form) }}
+		{{ form_widget(form) }}
+		<button class="btn btn-lg btn-success">{{ button_label|default('Save') }}</button>
+		{{ form_end(form) }}
+
+		<a href="{{ path('atelier_index') }}" class="btn btn-lg btn-primary">Retour à la liste</a>
+	</div>
+
+{% endblock %}
