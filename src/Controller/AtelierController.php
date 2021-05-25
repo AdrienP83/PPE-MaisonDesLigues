@@ -28,7 +28,7 @@ class AtelierController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="ajout_atelier")
+      * @Route("/new", name="atelier_new", methods={"GET","POST"})
      */
     public function new(Request $request)
     {   $atelier = new Atelier();
