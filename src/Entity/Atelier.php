@@ -36,7 +36,6 @@ class Atelier
 
     /**
      * @ORM\ManyToOne(targetEntity=Vacations::class, inversedBy="desateliers")
-     * @ORM\JoinColumn(nullable=false)
      */
     private $unevacation;
 

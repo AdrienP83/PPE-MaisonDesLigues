@@ -20,7 +20,7 @@ class Inscription
     private $id;
 
     /**
-     * @ORM\OneToOne(targetEntity=User::class, cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=User::class, inversedBy="uneinscription", cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $uncompte;
