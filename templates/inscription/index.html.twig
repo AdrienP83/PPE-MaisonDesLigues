@@ -24,13 +24,13 @@
                     {{app.user.unlicencie.tel}}</p>
                 <p>Email : 
                     {{app.user.email}}
-                <form method="post" action="{{path(inscription_modifyEmail)}}">
+            {#}    <form method="post" action="{{path(inscription_modifyEmail)}}">
                     <label for"inputEmail">Adresse mail : 
                     </label>
                     <input type="email" value="{{app.user.email}}" name ="email" id="inputEmail" class="form-control" required autofocus>
                     <button class="btn btn-lg btn-primary" type="submit">
                         Modifier
-                    </button>
+                    </button>  {#}
 
             </div>
 

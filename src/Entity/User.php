@@ -46,6 +46,11 @@ class User implements UserInterface
      */
     private $unlicencie;
 
+    /**
+     * @ORM\Column(type="string", length=11, unique=true)
+     */
+    private $numlicence;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -147,6 +152,19 @@ class User implements UserInterface
     public function setUnlicencie(?Licencie $unlicencie): self
     {
         $this->unlicencie = $unlicencie;
+
+        return $this;
+    }
+
+    public function getNumlicence(): ?string
+    {
+        
+        return $this->numlicence;
+    }
+
+    public function setNumlicence(string $numlicence): self
+    {
+        $this->numlicence = $numlicence;
 
         return $this;
     }

@@ -18,8 +18,10 @@
 		{% endif %}
 
 		<h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+	{#}	<label for="inputNumLicence">Numéro de Licence</label>
+		<input type="text" value ="{{ last_username }}" name="numLicence" id="NumLicence" class="form-control" required autofocus> {#}
 		<label for="inputEmail">Email</label>
-		<input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" required autofocus>
+		<input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" required autofocus> 
 		<label for="inputPassword">Mot de passe</label>
 		<input type="password" name="password" id="inputPassword" class="form-control" required>
 
