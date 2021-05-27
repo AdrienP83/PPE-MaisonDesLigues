@@ -41,6 +41,11 @@ class User implements UserInterface
      */
     private $uneinscription;
 
+    /**
+     * @ORM\OneToOne(targetEntity=Licencie::class, mappedBy="uncompte", cascade={"persist", "remove"})
+     */
+    private $unlicencie;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -130,6 +135,18 @@ class User implements UserInterface
     public function setUneinscription(?inscription $uneinscription): self
     {
         $this->uneinscription = $uneinscription;
+
+        return $this;
+    }
+
+    public function getUnlicencie(): ?Licencie
+    {
+        return $this->unlicencie;
+    }
+
+    public function setUnlicencie(?Licencie $unlicencie): self
+    {
+        $this->unlicencie = $unlicencie;
 
         return $this;
     }

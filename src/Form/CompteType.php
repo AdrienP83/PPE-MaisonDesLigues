@@ -15,7 +15,7 @@ class CompteType extends AbstractType
     {
         $builder    
             ->add('username')
-            ->add('email')
+            ->add('email', EmailType::class)
             ->add('password', PasswordType::class)
             ->add('confirm_password', PasswordType::class)
         ;

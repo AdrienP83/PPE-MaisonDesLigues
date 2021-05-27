@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block body %}
+    {% if app.user %}
+        <h1>Inscription</h1>
+            <div>
+              {#}  <p>Numéro de licence : 
+                    {{app.user.unlicencie.getNumlicenceunique()}} {#}
+                <p>Nom :
+                    {{app.user.unlicencie.nom}}</p>
+                <p>Prenom :
+                    {{app.user.unlicencie.prenom}}</p>
+                <p>Adresse 1 :
+                    {{app.user.unlicencie.adresse1}}</p>
+                <p>Adresse 2 :
+                    {{app.user.unlicencie.adresse2}}</p>
+                <p>Code Postal :
+                    {{app.user.unlicencie.cp}}</p>
+                <p>Ville:
+                    {{app.user.unlicencie.ville}}</p>
+                <p>Téléphone mobile :
+                    {{app.user.unlicencie.tel}}</p>
+                <p>Email : 
+                    {{app.user.email}}
+                <form method="post" action="{{path(inscription_modifyEmail)}}">
+                    <label for"inputEmail">Adresse mail : 
+                    </label>
+                    <input type="email" value="{{app.user.email}}" name ="email" id="inputEmail" class="form-control" required autofocus>
+                    <button class="btn btn-lg btn-primary" type="submit">
+                        Modifier
+                    </button>
+
+            </div>
+
+
+
+
+    {% endif %}
+{% endblock %}

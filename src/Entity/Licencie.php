@@ -32,7 +32,7 @@ class Licencie
     private $mail;
 
     /**
-     * @ORM\OneToOne(targetEntity=User::class, cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=User::class, inversedBy="unlicencie", cascade={"persist", "remove"})
      */
     private $uncompte;
 

@@ -28,7 +28,7 @@ class AdminController extends AbstractController
     }
 
     /**
-     * Permet de modifier le statu d'un utilisateur
+     * Permet de modifier le statut d'un utilisateur
      * 
      * @Route("/utilisateurs/modifier/{id}", name="modifier_utilisateur")
      */

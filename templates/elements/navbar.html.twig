@@ -27,6 +27,13 @@
 						<a href="{{ path('atelier_index') }}" class="nav-link">Ateliers
 						</a>
 					</li>
+					{% if is_granted('ROLE_INSCRIT') %}
+						<li class="nav-item">
+							<a href="{{ path('inscription_index') }}" class="nav-link">Inscription
+							</a>
+						</li>
+						{% else %}
+					{% endif %}
 					{% if is_granted('ROLE_ADMIN') %}
 						<li class="nav-item">
 							<a href="{{ path('admin_utilisateur') }}" class="nav-link">Liste Visiteurs
